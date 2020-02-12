@@ -1,0 +1,20 @@
+---
+name: follow stage branch
+on:
+  push:
+    branches:
+      - stage
+
+jobs:
+  follow-stage-branch:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: rebase
+      run: |
+        git fetch origin stage-features
+        git checkout stage-features
+        git rebase stage --force
+        git push -f
+        
