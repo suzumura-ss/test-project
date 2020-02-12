@@ -13,8 +13,7 @@ jobs:
 
     - name: rebase
       run: |
-        git fetch origin stage-features
-        git checkout stage-features
-        git rebase stage --force
-        git push -f
-        
+        git config --global user.email "automata@vecnos.com"
+        git config --global user.name "automata"
+        git checkout -b stage-features
+        git push --set-upstream origin stage-features --force
